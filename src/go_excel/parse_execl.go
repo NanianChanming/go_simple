@@ -1,7 +1,6 @@
 package go_excel
 
 import (
-	"fmt"
 	log "github.com/cihub/seelog"
 	"github.com/xuri/excelize/v2"
 	_ "go_simple/src/go_seelog"
@@ -24,7 +23,7 @@ func ParseExcel() {
 	}()
 	list := file.GetSheetList()
 	if err != nil {
-		log.Info("Fatal error ", err.Error())
+		log.Error("Fatal error ", err.Error())
 		return
 	}
 	file.RemoveRow(list[0], 1)
@@ -37,7 +36,7 @@ func ParseExcel() {
 			break
 		}
 		if err != nil {
-			fmt.Println("Fatal error ", err.Error())
+			log.Error("Fatal error ", err.Error())
 			return
 		}
 		//build.WriteString(sql)
@@ -52,10 +51,6 @@ func ParseExcel() {
 	if index > 0 {
 		sql = strings.Replace(sql, ",)", ")", index)
 	}
-	log.Debug("-- debug log --")
 	log.Info("-- 解析完成, 输出sql --")
-	log.Trace("-- trace log --")
-	log.Warn("-- warn log --")
-	log.Error("-- error log --")
 	log.Info(sql)
 }
