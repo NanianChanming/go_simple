@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<seelog minlevel="debug" maxlevel="error">
+    <outputs formatid="common">
+        <console formatid="console"/>
+        <rollingfile formatid="common" type="date" filename="data/logs/roll.log" datepattern="20060102" maxrolls="100" fullname="true"/>
+        <filter levels="error">
+            <file formatid="common" path="data/logs/error/error.log"/>
+        </filter>
+    </outputs>
+    <formats>
+        <format id="common" format="%Date %Time [%LEVEL] %File:%Line %FuncShort %Msg%n"/>
+        <format id="console"  format="%EscM(46)%Date %Time %Level%EscM(49) %File:%Line %FuncShort %Msg%n%EscM(0)"/>
+    </formats>
+</seelog>
